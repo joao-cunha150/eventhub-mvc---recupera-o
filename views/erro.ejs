@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header', { usuario: typeof usuario !== 'undefined' ? usuario : null }) %>
+
+  <main class="container pagina-erro">
+    <h1>Ops!</h1>
+    <p><%= mensagem || 'Ocorreu um erro inesperado.' %></p>
+    <a href="/" class="btn btn-primary">Voltar ao início</a>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

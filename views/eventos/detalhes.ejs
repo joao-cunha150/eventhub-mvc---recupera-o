@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container page">
+    <%- include('../partials/alertas') %>
+
+    <div class="evento-detalhes">
+      <h1><%= evento.titulo %></h1>
+      <p class="evento-organizador">Organizado por <%= evento.organizador_nome %></p>
+
+      <div class="evento-info-grid">
+        <div><strong>Data:</strong> <%= new Date(evento.data_evento).toLocaleDateString('pt-BR') %></div>
+        <div><strong>Horário:</strong> <%= evento.horario %></div>
+        <div><strong>Local:</strong> <%= evento.local %></div>
+        <div><strong>Inscritos:</strong> <%= evento.total_inscritos %><%= evento.capacidade ? ' / ' + evento.capacidade : '' %></div>
+      </div>
+
+      <h2>Descrição</h2>
+      <p class="evento-descricao"><%= evento.descricao %></p>
+
+      <% if (usuario && usuario.tipo_usuario === 'participante') { %>
+        <% if (jaInscrito) { %>
+          <form action="/eventos/<%= evento.id %>/cancelar-inscricao" method="POST">
+            <button type="submit" class="btn btn-outline">Cancelar inscrição</button>
+          </form>
+        <% } else { %>
+          <form action="/eventos/<%= evento.id %>/inscrever" method="POST">
+            <button type="submit" class="btn btn-primary">Inscrever-se</button>
+          </form>
+        <% } %>
+      <% } else if (!usuario) { %>
+        <p><a href="/auth/login">Entre</a> para se inscrever neste evento.</p>
+      <% } %>
+
+      <% if (usuario && usuario.tipo_usuario === 'organizador' && usuario.id === evento.usuario_id) { %>
+        <div class="acoes-organizador">
+          <a href="/eventos/<%= evento.id %>/editar" class="btn btn-outline">Editar evento</a>
+          <a href="/eventos/<%= evento.id %>/inscritos" class="btn btn-outline">Ver inscritos</a>
+          <form action="/eventos/<%= evento.id %>/excluir" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este evento?');">
+            <button type="submit" class="btn btn-danger">Excluir evento</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

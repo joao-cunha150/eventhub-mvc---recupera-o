@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container page">
+    <div class="page-header">
+      <h1>Meus eventos</h1>
+      <a href="/eventos/criar" class="btn btn-primary">+ Novo evento</a>
+    </div>
+    <%- include('../partials/alertas') %>
+
+    <% if (eventos.length === 0) { %>
+      <p class="empty-state">Você ainda não criou nenhum evento.</p>
+    <% } else { %>
+      <div class="grid-cards">
+        <% eventos.forEach(function(evento) { %>
+          <div class="card-evento">
+            <a href="/eventos/<%= evento.id %>">
+              <h3><%= evento.titulo %></h3>
+              <p class="evento-meta">📅 <%= new Date(evento.data_evento).toLocaleDateString('pt-BR') %> às <%= evento.horario %></p>
+              <p class="evento-meta">📍 <%= evento.local %></p>
+              <p class="evento-inscritos">
+                <%= evento.total_inscritos %><%= evento.capacidade ? ' / ' + evento.capacidade : '' %> inscritos
+              </p>
+            </a>
+            <div class="card-acoes">
+              <a href="/eventos/<%= evento.id %>/editar" class="btn btn-outline btn-small">Editar</a>
+              <a href="/eventos/<%= evento.id %>/inscritos" class="btn btn-outline btn-small">Inscritos</a>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

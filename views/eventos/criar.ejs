@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container page-estreita">
+    <h1>Criar evento</h1>
+    <%- include('../partials/alertas') %>
+
+    <form action="/eventos/criar" method="POST" class="form">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" value="<%= dados.titulo || '' %>" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="4" required><%= dados.descricao || '' %></textarea>
+
+      <div class="form-row">
+        <div>
+          <label for="data_evento">Data</label>
+          <input type="date" id="data_evento" name="data_evento" value="<%= dados.data_evento || '' %>" required>
+        </div>
+        <div>
+          <label for="horario">Horário</label>
+          <input type="time" id="horario" name="horario" value="<%= dados.horario || '' %>" required>
+        </div>
+      </div>
+
+      <label for="local">Local</label>
+      <input type="text" id="local" name="local" value="<%= dados.local || '' %>" required>
+
+      <label for="capacidade">Capacidade máxima (opcional)</label>
+      <input type="number" id="capacidade" name="capacidade" min="1" value="<%= dados.capacidade || '' %>">
+
+      <button type="submit" class="btn btn-primary btn-full">Criar evento</button>
+    </form>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

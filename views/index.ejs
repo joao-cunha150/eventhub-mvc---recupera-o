@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header', { usuario: typeof usuario !== 'undefined' ? usuario : null }) %>
+
+  <main class="hero">
+    <div class="container hero-content">
+      <h1>Organize e participe de eventos incríveis</h1>
+      <p>O EventHub conecta organizadores e participantes em um só lugar. Crie eventos, gerencie inscrições e descubra experiências novas.</p>
+      <div class="hero-actions">
+        <a href="/eventos" class="btn btn-primary">Ver eventos</a>
+        <a href="/auth/cadastro" class="btn btn-outline">Criar conta grátis</a>
+      </div>
+    </div>
+  </main>
+
+  <section class="container features">
+    <div class="feature-card">
+      <h3>Para organizadores</h3>
+      <p>Crie, edite e gerencie seus eventos, acompanhe inscritos em tempo real.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Para participantes</h3>
+      <p>Descubra eventos, inscreva-se em poucos cliques e acompanhe suas inscrições.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Simples e seguro</h3>
+      <p>Autenticação segura, dados protegidos e uma experiência fluida do início ao fim.</p>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="container header-content">
+    <a href="/" class="logo">Event<span>Hub</span></a>
+    <nav class="nav">
+      <a href="/eventos">Eventos</a>
+      <% if (usuario) { %>
+        <% if (usuario.tipo_usuario === 'organizador') { %>
+          <a href="/eventos/meus-eventos">Meus eventos</a>
+          <a href="/eventos/criar">Criar evento</a>
+        <% } else { %>
+          <a href="/eventos/minhas-inscricoes">Minhas inscrições</a>
+        <% } %>
+        <span class="nav-user">Olá, <%= usuario.nome %></span>
+        <form action="/auth/logout" method="POST" class="form-inline">
+          <button type="submit" class="btn btn-outline">Sair</button>
+        </form>
+      <% } else { %>
+        <a href="/auth/login">Entrar</a>
+        <a href="/auth/cadastro" class="btn btn-primary btn-small">Criar conta</a>
+      <% } %>
+    </nav>
+  </div>
+</header>

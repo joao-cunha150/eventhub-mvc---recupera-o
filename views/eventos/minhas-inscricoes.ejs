@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container page">
+    <h1>Minhas inscrições</h1>
+    <%- include('../partials/alertas') %>
+
+    <% if (inscricoes.length === 0) { %>
+      <p class="empty-state">Você ainda não se inscreveu em nenhum evento.</p>
+    <% } else { %>
+      <div class="grid-cards">
+        <% inscricoes.forEach(function(inscricao) { %>
+          <div class="card-evento">
+            <a href="/eventos/<%= inscricao.evento_id %>">
+              <h3><%= inscricao.titulo %></h3>
+              <p class="evento-meta">📅 <%= new Date(inscricao.data_evento).toLocaleDateString('pt-BR') %> às <%= inscricao.horario %></p>
+              <p class="evento-meta">📍 <%= inscricao.local %></p>
+              <p class="evento-meta">Inscrito em <%= new Date(inscricao.data_inscricao).toLocaleDateString('pt-BR') %></p>
+            </a>
+            <form action="/eventos/<%= inscricao.evento_id %>/cancelar-inscricao" method="POST">
+              <button type="submit" class="btn btn-outline btn-small">Cancelar inscrição</button>
+            </form>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

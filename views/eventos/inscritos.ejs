@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main class="container page">
+    <h1>Inscritos em "<%= evento.titulo %>"</h1>
+    <%- include('../partials/alertas') %>
+
+    <% if (inscritos.length === 0) { %>
+      <p class="empty-state">Nenhum participante inscrito ainda.</p>
+    <% } else { %>
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Data da inscrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% inscritos.forEach(function(inscrito) { %>
+            <tr>
+              <td><%= inscrito.nome %></td>
+              <td><%= inscrito.email %></td>
+              <td><%= new Date(inscrito.data_inscricao).toLocaleDateString('pt-BR') %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+
+    <a href="/eventos/<%= evento.id %>" class="btn btn-outline">Voltar ao evento</a>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

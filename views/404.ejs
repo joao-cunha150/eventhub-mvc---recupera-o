@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header', { usuario: typeof usuario !== 'undefined' ? usuario : null }) %>
+
+  <main class="container pagina-erro">
+    <h1>404</h1>
+    <p>A página que você procura não existe ou foi removida.</p>
+    <a href="/" class="btn btn-primary">Voltar ao início</a>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

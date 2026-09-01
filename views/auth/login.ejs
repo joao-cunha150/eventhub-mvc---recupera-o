@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/header', { usuario: null }) %>
+
+  <main class="container auth-page">
+    <div class="auth-card">
+      <h1>Entrar</h1>
+      <%- include('../partials/alertas') %>
+
+      <form action="/auth/login" method="POST" class="form">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" value="<%= dados.email || '' %>" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+      </form>
+
+      <p class="auth-link">Não tem conta? <a href="/auth/cadastro">Cadastre-se</a></p>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

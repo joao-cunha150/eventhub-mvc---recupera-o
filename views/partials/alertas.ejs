@@ -1,0 +1,15 @@
+<% if (typeof mensagemSucesso !== 'undefined' && mensagemSucesso) { %>
+  <div class="alert alert-sucesso"><%= mensagemSucesso %></div>
+<% } %>
+<% if (typeof mensagemErro !== 'undefined' && mensagemErro) { %>
+  <div class="alert alert-erro"><%= mensagemErro %></div>
+<% } %>
+<% if (typeof erros !== 'undefined' && erros && erros.length > 0) { %>
+  <div class="alert alert-erro">
+    <ul>
+      <% erros.forEach(function(erro) { %>
+        <li><%= erro.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
