@@ -17,6 +17,10 @@ const eventoRoutes = require('./routes/eventoRoutes');
 
 const app = express();
 
+// Necessário para o funcionamento correto de cookies seguros
+// quando a aplicação está hospedada atrás do proxy do Render.
+app.set('trust proxy', 1);
+
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +45,7 @@ app.use(paginaNaoEncontrada);
 app.use(tratarErros);
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`EventHub rodando em http://localhost:${PORT}`);
 });
