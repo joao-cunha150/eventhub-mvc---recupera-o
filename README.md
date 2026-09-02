@@ -2,7 +2,7 @@
 
 EventHub é uma aplicação web monolítica para gestão de eventos e inscrições, desenvolvida com arquitetura **MVC** (Model-View-Controller) usando Node.js, Express e renderização server-side com EJS.
 
-## 📌 O que é o projeto
+##  O que é o projeto
 
 Organizadores podem criar, editar, excluir e acompanhar eventos e seus inscritos. Participantes podem navegar pelos eventos disponíveis, visualizar detalhes e se inscrever, respeitando limite de capacidade e evitando inscrições duplicadas.
 
@@ -18,7 +18,7 @@ Organizadores podem criar, editar, excluir e acompanhar eventos e seus inscritos
 - dotenv (variáveis de ambiente)
 - cookie-parser, method-override
 
-## 🏗️ Arquitetura MVC
+##  Arquitetura MVC
 
 ```
 eventhub-mvc/
@@ -53,7 +53,7 @@ O fluxo segue o padrão MVC clássico: **routes** recebem a requisição → cha
    npm install
    ```
 
-## 🔐 Como configurar o `.env`
+##  Como configurar o `.env`
 
 1. Copie o arquivo de exemplo:
    ```bash
@@ -78,7 +78,7 @@ O fluxo segue o padrão MVC clássico: **routes** recebem a requisição → cha
 
    > Em produção (ex: banco em nuvem), defina `DB_SSL=true` e `NODE_ENV=production`.
 
-## 🗄️ Banco de dados
+##  Banco de dados
 
 1. Crie o banco e as tabelas executando o script SQL completo:
    ```bash
@@ -86,7 +86,7 @@ O fluxo segue o padrão MVC clássico: **routes** recebem a requisição → cha
    ```
    Isso criará o banco `eventhub` com as tabelas `usuarios`, `eventos` e `inscricoes`, já com chaves estrangeiras e índices.
 
-## ▶️ Como executar
+##  Como executar
 
 Modo desenvolvimento (com reinício automático):
 ```bash
@@ -100,7 +100,7 @@ npm start
 
 A aplicação estará disponível em `http://localhost:3000` (ou na porta definida em `PORT`).
 
-## ✅ Funcionalidades
+##  Funcionalidades
 
 ### Autenticação
 - Cadastro de usuários (organizador ou participante)
@@ -120,7 +120,7 @@ A aplicação estará disponível em `http://localhost:3000` (ou na porta defini
 - Visualizar suas inscrições ("Minhas inscrições")
 - Impedimento de inscrição duplicada e respeito ao limite de capacidade do evento
 
-## 🔒 Segurança
+##  Segurança
 
 - Todas as queries usam **Prepared Statements** (`pool.execute` do mysql2), nunca concatenando valores em SQL.
 - Senhas com hash `bcryptjs`.
@@ -129,11 +129,11 @@ A aplicação estará disponível em `http://localhost:3000` (ou na porta defini
 - Tratamento de erros com `try/catch` em todos os controllers, sem exposição de stack trace ao usuário.
 - Segredos (banco de dados, sessão) apenas em variáveis de ambiente (`.env`, nunca commitado).
 
-## 📂 Estrutura de pastas
+## Estrutura de pastas
 
 Ver seção [Arquitetura MVC](#🏗️-arquitetura-mvc) acima.
 
-## 🚀 Como fazer deploy (Render)
+##  Como fazer deploy (Render)
 
 1. Crie um banco MySQL em nuvem (ex: Aiven) e anote host, porta, usuário, senha e nome do banco.
 2. Execute o `database/schema.sql` nesse banco para criar as tabelas.
@@ -144,6 +144,6 @@ Ver seção [Arquitetura MVC](#🏗️-arquitetura-mvc) acima.
 7. O Render define a porta automaticamente via `process.env.PORT`, já suportado pela aplicação.
 8. Faça o deploy e acesse a URL gerada.
 
-## 📄 Licença
+##  Licença
 
 Projeto acadêmico desenvolvido para fins de recuperação trimestral.
